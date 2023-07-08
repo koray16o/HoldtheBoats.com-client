@@ -19,7 +19,7 @@ function App() {
           style={{
             display: 'flex',
             flexDirection: 'row-reverse',
-            justifyContent: 'space-around'
+            marginRight: 282
           }}
         >
           Hello User!

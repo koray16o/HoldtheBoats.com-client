@@ -43,7 +43,7 @@ textarea {
   margin: 10px;
 }
 
-.Navbar {
+/* .Navbar {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -58,7 +58,7 @@ textarea {
   margin: 0px 10px;
   color: white;
 }
-
+ */
 .selected {
   color: #fff;
   border-bottom: rgba(255, 255, 255, 0.639) solid 2px;
