@@ -1,35 +1,34 @@
 import './App.css';
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Boats from './pages/Boats';
+import Search from './pages/Search';
+import MyBoatAds from './pages/MyBoatAds';
+import FavBoats from './pages/FavBoats';
+import Faq from './pages/FAQ';
+import AddBoat from './pages/AddBoat';
+import EditBoat from './pages/EditBoat';
+import BoatDetails from './pages/BoatDetails';
 
 function App() {
   return (
-    //<div>
-    // <Signup /> and <Login />
-    //After this, all of the above <IsPrivate /> so this way we can make our "/" page the login?
     <div>
-      <div className="logo">
-        <img
-          src="/public/f4024b6077144fb39da68f2e844b5236 (1).png"
-          alt="Logo"
-          width={125}
-        />
-        <div
-          className="greetingUser"
-          style={{
-            display: 'flex',
-            flexDirection: 'row-reverse',
-            marginRight: 282
-          }}
-        >
-          Hello User!
-        </div>
-      </div>
-
-      <Navbar />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/boats" element={<Boats />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/boats/ads" element={<MyBoatAds />} />
+        <Route path="/favboats" element={<FavBoats />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/new-boat" element={<AddBoat />} />
+        <Route path="/boats/edit/:id" element={<EditBoat />} />
+        <Route path="/boats/:id" element={<BoatDetails />} />
+      </Routes>
     </div>
-    //</div>
   );
 }
 

@@ -8,7 +8,8 @@ import {
   MenuDivider,
   Button
 } from '@chakra-ui/react';
-
+/* import { Navigate } from 'react-router-dom';
+ */
 const PersonalArea = () => {
   return (
     <div>
@@ -18,13 +19,29 @@ const PersonalArea = () => {
         </MenuButton>
         <MenuList>
           <MenuGroup title="Profile">
-            <MenuItem>My Ads</MenuItem>
-            <MenuItem>Favourite Boats </MenuItem>
-            <MenuItem>Create Boats </MenuItem>
+            <MenuItem>
+              {/* <Navigate to="/boats/ads"> */}My Ads
+              {/*               </Navigate>
+               */}{' '}
+            </MenuItem>
+            <MenuItem>
+              {/* <Navigate to="/favboats"> */}Favourite Boats
+              {/*               </Navigate>{' '}
+               */}{' '}
+            </MenuItem>
+            <MenuItem>
+              {/* <Navigate to="/new-boat"> */}Create Boats
+              {/*  </Navigate>{' '} */}
+            </MenuItem>
           </MenuGroup>
           <MenuDivider />
           <MenuGroup title="Help">
-            <MenuItem>FAQ</MenuItem>
+            <MenuItem>
+              {' '}
+              {/*               <Navigate to="/faq" />
+               */}{' '}
+              FAQ
+            </MenuItem>
           </MenuGroup>
         </MenuList>
       </Menu>

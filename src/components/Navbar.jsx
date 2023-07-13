@@ -10,21 +10,62 @@ import {
   MenuItem,
   MenuDivider
 } from '@chakra-ui/react';
+import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
 
 const Navbar = () => {
+  const { logOutUser } = useContext(AuthContext);
+
   return (
     <>
+      <div className="logo">
+        <img
+          src="/f4024b6077144fb39da68f2e844b5236 (1).png"
+          alt="Logo"
+          width={125}
+        />
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            justifyContent: 'space-around'
+          }}
+        >
+          <div
+            className="greetingUser"
+            style={{
+              display: 'flex',
+              justifyContent: 'center'
+            }}
+          ></div>
+          Hello User!
+          <div>
+            <button
+              onClick={logOutUser}
+              style={{
+                display: 'flex',
+                flexDirection: 'row-reverse',
+                backgroundColor: 'lightblue',
+                color: 'red',
+                borderColor: 'black'
+              }}
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
       <Nav>
         <Bars />
 
         <NavMenu>
-          <NavLink to="/home" activeStyle>
+          <NavLink to="/home" activestyle="true">
             Home
           </NavLink>
-          <NavLink to="/boats" activeStyle>
+          <NavLink to="/boats" activestyle="true">
             Boats
           </NavLink>
-          <NavLink to="/faq" activeStyle>
+          <NavLink to="/faq" activestyle="true">
             F.A.Q.
           </NavLink>
           <PersonalArea />
