@@ -19,6 +19,7 @@ const PersonalArea = () => {
         </MenuButton>
         <MenuList>
           <MenuGroup title="Profile">
+            <MenuItem>My Profile</MenuItem>
             <MenuItem>
               {/* <Navigate to="/boats/ads"> */}My Ads
               {/*               </Navigate>
