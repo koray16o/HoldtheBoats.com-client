@@ -31,7 +31,7 @@ const PersonalArea = () => {
                */}{' '}
             </MenuItem>
             <MenuItem>
-              {/* <Navigate to="/new-boat"> */}Create Boats
+              {/* <Navigate to="/newboat"> */}Create Boats
               {/*  </Navigate>{' '} */}
             </MenuItem>
           </MenuGroup>

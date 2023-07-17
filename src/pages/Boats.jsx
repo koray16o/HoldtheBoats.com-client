@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAllBoats } from '../api/boats.api';
-import AddBoat from './AddBoat';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Boats = () => {
   const [boats, setBoats] = useState([]);
@@ -21,13 +21,29 @@ const Boats = () => {
 
   return (
     <div>
-      <AddBoat refreshList={fetchBoats} />
+      <Navbar />
+
+      <h1
+        style={{
+          marginTop: '30px',
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <b>Check out the newest boats!</b>
+      </h1>
       {boats &&
         boats.map(boat => {
           return (
             <div key={boat._id} className="boatCard">
               <h1>{boat.title}</h1>
-              {boat.imgURL && <img src={boat.imgURL} width={250} />}
+              {Array.isArray(boat.imgURL) ? (
+                boat.imgURL.map(url => (
+                  <img src={url} key={url} alt="Boat" width={250} />
+                ))
+              ) : (
+                <img src={boat.imgURL} alt="Boat" width={250} />
+              )}
               <Link to={`/boats/${boat._id}`}>See more Details</Link>
             </div>
           );

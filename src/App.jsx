@@ -24,7 +24,7 @@ function App() {
         <Route path="/boats/ads" element={<MyBoatAds />} />
         <Route path="/favboats" element={<FavBoats />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/new-boat" element={<AddBoat />} />
+        <Route path="/newboat" element={<AddBoat />} />
         <Route path="/boats/edit/:id" element={<EditBoat />} />
         <Route path="/boats/:id" element={<BoatDetails />} />
       </Routes>

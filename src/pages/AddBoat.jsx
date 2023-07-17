@@ -2,33 +2,25 @@ import Navbar from '../components/Navbar';
 import { useState } from 'react';
 import { addBoat, upload } from '../api/boats.api';
 import { toast } from 'react-toastify';
-import { InboxOutlined, UploadOutlined } from '@ant-design/icons';
-import { Button, Form, Input, InputNumber, Select, Space, Upload } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-const { TextArea } = Input;
-const normFile = e => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-
-const AddBoat = ({ refreshList }) => {
+const AddBoat = () => {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState();
   const [type, setType] = useState('');
   const [form, setForm] = useState('');
   const [description, setDescription] = useState('');
   const [country, setCountry] = useState('');
+  const navigate = useNavigate();
 
   const handleTitle = e => {
     setTitle(e.target.value);
   };
-  const handleImage = info => {
-    setImage(info.fileList);
+  const handleImage = e => {
+    setImage(e.target.files);
   };
-  const handleType = value => {
-    setType(value);
+  const handleType = e => {
+    setType(e.target.value);
   };
   const handleForm = e => {
     setForm(e.target.value);
@@ -44,7 +36,13 @@ const AddBoat = ({ refreshList }) => {
     e.preventDefault();
     console.log('Submit button working');
     try {
-      const newBoat = { title, type, form, description, country };
+      const newBoat = {
+        title,
+        type,
+        form,
+        description,
+        country
+      };
       if (!image || image.length === 0) {
         toast.error('Please select at least one file');
         return;
@@ -52,14 +50,15 @@ const AddBoat = ({ refreshList }) => {
 
       const uploadData = new FormData();
       for (let i = 0; i < image.length; i++) {
-        uploadData.append('file', image[i]);
+        uploadData.append('files', image[i]);
       }
       const response = await upload(uploadData);
-      newBoat.imgUrl = response.data.fileUrl;
+      console.log('Response', response.data);
+      newBoat.imgURL = response.data.fileUrl;
+      console.log('Response fileUrl', response.data.fileUrl);
 
       await addBoat(newBoat);
-      toast.success('Project added successfully!');
-      refreshList();
+      toast.success('Boat created!');
     } catch (error) {
       toast.error('Something went wrong, try again later');
       console.log('Error adding the Boat', error);
@@ -71,8 +70,8 @@ const AddBoat = ({ refreshList }) => {
     setForm('');
     setDescription('');
     setCountry('');
+    navigate('/boats');
   };
-  console.log(handleSubmit);
 
   return (
     <div>
@@ -90,166 +89,96 @@ const AddBoat = ({ refreshList }) => {
         </h1>
         <hr style={{ marginTop: '15px', marginBottom: '15px' }} />
 
-        <Form
-          onSubmit={handleSubmit}
-          labelCol={{
-            span: 4
-          }}
-          wrapperCol={{
-            span: 14
-          }}
-          layout="horizontal"
-          style={{
-            maxWidth: 600
-          }}
-        >
-          <Form.Item label="Title">
-            <Input
-              type="text"
-              name="title"
-              value={title}
-              onChange={handleTitle}
-            />
-          </Form.Item>
+        <form onSubmit={handleSubmit}>
+          <label>Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={handleTitle}
+          />
 
-          <Form.Item label="Type">
-            <Select name="type" value={type} onChange={handleType}>
-              <Select.Option value="sailboats">Sailboats</Select.Option>
-              <Select.Option value="powerBoats">Power Boats</Select.Option>
-              <Select.Option value="classicBoat">Classic Boats</Select.Option>
-              <Select.Option value="dinghy">Dinghy</Select.Option>
-            </Select>
-          </Form.Item>
+          <label>Type:</label>
+          <select name="type" onChange={handleType}>
+            <option value="none"></option>
+            <option value="sailboat">Sailboats</option>
+            <option value="powerboat">Powerboats</option>
+            <option value="classicboat">Classicboats</option>
+            <option value="dinghy">Dinghy</option>
+          </select>
 
-          <div value={form} onChange={handleForm}>
-            <Form.Item label="Built in">
-              <InputNumber />
-            </Form.Item>
+          <div onChange={handleForm}>
+            <label>Built in:</label>
+            <input type="number" name="builtIn" />
 
-            <Form.Item label="Condition">
-              <Input />
-            </Form.Item>
-
-            <Form.Item label="Length">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Beam">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Draught">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Displacement">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Material">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Steering">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Keel">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Ballast">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Headroom">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Cabins">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Berths">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Watertank">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Propulsion">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Engine">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Fuel type">
-              <Input />
-            </Form.Item>
+            <label>Condition:</label>
+            <input type="text" name="condition" />
+            <label>Length:</label>
+            <input type="text" name="length" />
+            <label>Beam:</label>
+            <input type="text" name="beam" />
+            <label>Draught:</label>
+            <input type="text" name="draught" />
+            <label>Displacement:</label>
+            <input type="text" name="displacement" />
+            <label>Material:</label>
+            <input type="text" name="material" />
+            <label>Steering:</label>
+            <input type="text" name="steering" />
+            <label>Keel:</label>
+            <input type="text" name="keel" />
+            <label>Ballast:</label>
+            <input type="text" name="ballast" />
+            <label>Headroom:</label>
+            <input type="text" name="headroom" />
+            <label>Cabins:</label>
+            <input type="text" name="cabins" />
+            <label>Berths:</label>
+            <input type="text" name="berths" />
+            <label>Watertank:</label>
+            <input type="text" name="watertank" />
+            <label>Propulsion:</label>
+            <input type="text" name="propulsion" />
+            <label>Engine:</label>
+            <input type="text" name="engine" />
+            <label>Fuel type:</label>
+            <input type="text" name="fuelType" />
           </div>
-          <Form.Item label="Description">
-            <TextArea
-              rows={4}
-              type="text"
-              name="description"
-              value={description}
-              onChange={handleDescription}
-            />
-          </Form.Item>
+          <label>Description:</label>
+          <textarea
+            rows={4}
+            type="text"
+            name="description"
+            value={description}
+            onChange={handleDescription}
+          />
 
-          <Form.Item label="Country">
-            <Input
-              type="text"
-              name="country"
-              value={country}
-              onChange={handleCountry}
-            />
-          </Form.Item>
+          <label>Country:</label>
+          <input
+            type="text"
+            name="country"
+            value={country}
+            onChange={handleCountry}
+          />
 
-          <Form.Item
+          <label htmlFor="files" label="Upload">
+            Upload files:
+          </label>
+          <input
             type="file"
-            name="file"
-            label="Upload"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
+            id="files"
+            name="files"
             onChange={handleImage}
-            labelCol={{
-              span: 12
-            }}
-            wrapperCol={{
-              span: 14
-            }}
-            layout="horizontal"
-            extra="Or"
-          >
-            <Upload name="logo" listType="picture" beforeUpload={() => false}>
-              <Button icon={<UploadOutlined />}>Click to upload</Button>
-            </Upload>
-          </Form.Item>
+            multiple
+          />
 
-          <Form.Item label="">
-            <Form.Item
-              name="dragger"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-              noStyle
-            >
-              <Upload.Dragger name="file" action="/upload.do">
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">
-                  Click or drag file to this area to upload
-                </p>
-                <p className="ant-upload-hint">
-                  Support for a single or bulk upload.
-                </p>
-              </Upload.Dragger>
-            </Form.Item>
-          </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              span: 12,
-              offset: 6
-            }}
+          <button
+            type="submit"
+            style={{ backgroundColor: 'lightblue', color: 'red' }}
           >
-            <Space>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Space>
-          </Form.Item>
-        </Form>
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   );
