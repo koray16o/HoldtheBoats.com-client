@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar';
 import { useState, useEffect } from 'react';
 import { getAllBoats } from '../api/boats.api';
 import AddBoat from './AddBoat';
@@ -22,8 +21,6 @@ const Boats = () => {
 
   return (
     <div>
-      <Navbar />
-      <h1>Boats</h1>
       <AddBoat refreshList={fetchBoats} />
       {boats &&
         boats.map(boat => {

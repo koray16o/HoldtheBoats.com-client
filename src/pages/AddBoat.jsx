@@ -24,8 +24,8 @@ const AddBoat = ({ refreshList }) => {
   const handleTitle = e => {
     setTitle(e.target.value);
   };
-  const handleImage = e => {
-    setImage(e.target.files);
+  const handleImage = info => {
+    setImage(info.fileList);
   };
   const handleType = value => {
     setType(value);
@@ -42,6 +42,7 @@ const AddBoat = ({ refreshList }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    console.log('Submit button working');
     try {
       const newBoat = { title, type, form, description, country };
       if (!image || image.length === 0) {
@@ -71,6 +72,7 @@ const AddBoat = ({ refreshList }) => {
     setDescription('');
     setCountry('');
   };
+  console.log(handleSubmit);
 
   return (
     <div>
@@ -87,6 +89,7 @@ const AddBoat = ({ refreshList }) => {
           <b>Add New Boat</b>
         </h1>
         <hr style={{ marginTop: '15px', marginBottom: '15px' }} />
+
         <Form
           onSubmit={handleSubmit}
           labelCol={{
