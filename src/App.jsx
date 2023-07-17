@@ -11,6 +11,8 @@ import Faq from './pages/FAQ';
 import AddBoat from './pages/AddBoat';
 import EditBoat from './pages/EditBoat';
 import BoatDetails from './pages/BoatDetails';
+import EditUserProfile from './pages/EditUserProfile';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/newboat" element={<AddBoat />} />
         <Route path="/boats/edit/:id" element={<EditBoat />} />
         <Route path="/boats/:id" element={<BoatDetails />} />
+        <Route path="/profile/:id" element={<UserProfile />} />
+        <Route path="/profile/edit/:id" element={<EditUserProfile />} />
       </Routes>
     </div>
   );

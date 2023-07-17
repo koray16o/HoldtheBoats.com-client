@@ -19,11 +19,13 @@ const Navbar = () => {
   return (
     <>
       <div className="logo">
-        <img
-          src="/f4024b6077144fb39da68f2e844b5236 (1).png"
-          alt="Logo"
-          width={125}
-        />
+        <a href="/">
+          <img
+            src="/f4024b6077144fb39da68f2e844b5236 (1).png"
+            alt="Logo"
+            width={125}
+          />
+        </a>
         <div
           style={{
             display: 'flex',

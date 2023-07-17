@@ -46,7 +46,7 @@ const BoatDetails = () => {
       <div className="BoatDetails">
         {boat && (
           <div>
-            {Array.isArray(boat.imgURL) && (
+            {/* {boat.imgURL.length && (
               <div>
                 <h2>Images:</h2>
                 {boat.imgURL.map(url => (
@@ -58,7 +58,9 @@ const BoatDetails = () => {
                   />
                 ))}
               </div>
-            )}
+            )} */}
+            <img src={boat.imgURL} alt="" />
+            <h1>Price: {boat.price}</h1>
             <h1>Name: {boat.title}</h1>
             <h1>Type of Boat: {boat.type}</h1>
             <h1>{boat.form}</h1>

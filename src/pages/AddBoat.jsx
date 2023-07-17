@@ -9,8 +9,26 @@ const AddBoat = () => {
   const [image, setImage] = useState();
   const [type, setType] = useState('');
   const [form, setForm] = useState('');
+  const [year, setYear] = useState('');
+  const [condition, setCondition] = useState('');
+  const [length, setLength] = useState('');
+  const [beam, setBeam] = useState('');
+  const [draught, setDraught] = useState('');
+  const [displacement, setDisplacement] = useState('');
+  const [material, setMaterial] = useState('');
+  const [steering, setSteering] = useState('');
+  const [keel, setKeel] = useState('');
+  const [ballast, setBallast] = useState('');
+  const [headroom, setHeadroom] = useState('');
+  const [cabins, setCabins] = useState('');
+  const [berths, setBerths] = useState('');
+  const [watertank, setWatertank] = useState('');
+  const [propulsion, setPropulsion] = useState('');
+  const [engine, setEngine] = useState('');
+  const [fuelType, setFueltype] = useState('');
   const [description, setDescription] = useState('');
   const [country, setCountry] = useState('');
+  const [price, setPrice] = useState('');
   const navigate = useNavigate();
 
   const handleTitle = e => {
@@ -25,11 +43,65 @@ const AddBoat = () => {
   const handleForm = e => {
     setForm(e.target.value);
   };
+  const handleYear = e => {
+    setForm(e.target.value);
+  };
+  const handleCondition = e => {
+    setForm(e.target.value);
+  };
+  const handleLength = e => {
+    setForm(e.target.value);
+  };
+  const handleBeam = e => {
+    setForm(e.target.value);
+  };
+  const handleDraught = e => {
+    setForm(e.target.value);
+  };
+  const handleDisplacement = e => {
+    setForm(e.target.value);
+  };
+  const handleMaterial = e => {
+    setForm(e.target.value);
+  };
+  const handleSteering = e => {
+    setForm(e.target.value);
+  };
+  const handleKeel = e => {
+    setForm(e.target.value);
+  };
+  const handleBallast = e => {
+    setForm(e.target.value);
+  };
+  const handleHeadroom = e => {
+    setForm(e.target.value);
+  };
+  const handleCabins = e => {
+    setForm(e.target.value);
+  };
+  const handleBerths = e => {
+    setForm(e.target.value);
+  };
+  const handleWatertank = e => {
+    setForm(e.target.value);
+  };
+  const handlePropulsion = e => {
+    setForm(e.target.value);
+  };
+  const handleEngine = e => {
+    setForm(e.target.value);
+  };
+  const handleFueltype = e => {
+    setForm(e.target.value);
+  };
   const handleDescription = e => {
     setDescription(e.target.value);
   };
   const handleCountry = e => {
     setCountry(e.target.value);
+  };
+  const handlePrice = e => {
+    setPrice(e.target.value);
   };
 
   const handleSubmit = async e => {
@@ -41,7 +113,8 @@ const AddBoat = () => {
         type,
         form,
         description,
-        country
+        country,
+        price
       };
       if (!image || image.length === 0) {
         toast.error('Please select at least one file');
@@ -68,8 +141,26 @@ const AddBoat = () => {
     setImage();
     setType('');
     setForm('');
+    setYear('');
+    setCondition('');
+    setLength('');
+    setBeam('');
+    setDraught('');
+    setDisplacement('');
+    setMaterial('');
+    setSteering('');
+    setKeel('');
+    setBallast('');
+    setHeadroom('');
+    setCabins('');
+    setBerths('');
+    setWatertank('');
+    setPropulsion('');
+    setEngine('');
+    setFueltype('');
     setDescription('');
     setCountry('');
+    setPrice('');
     navigate('/boats');
   };
 
@@ -101,48 +192,123 @@ const AddBoat = () => {
           <label>Type:</label>
           <select name="type" onChange={handleType}>
             <option value="none"></option>
-            <option value="sailboat">Sailboats</option>
-            <option value="powerboat">Powerboats</option>
-            <option value="classicboat">Classicboats</option>
-            <option value="dinghy">Dinghy</option>
+            <option value="Sail Boat">Sailboats</option>
+            <option value="Power Boat">Powerboats</option>
+            <option value="Classic Boat">Classicboats</option>
+            <option value="Dinghy">Dinghy</option>
           </select>
 
-          <div onChange={handleForm}>
+          <div name="form" onChange={handleForm}>
             <label>Built in:</label>
-            <input type="number" name="builtIn" />
+            <input
+              type="number"
+              name="builtIn"
+              value={year}
+              onChange={handleYear}
+            />
 
             <label>Condition:</label>
-            <input type="text" name="condition" />
+            <input
+              type="text"
+              name="condition"
+              value={condition}
+              onChange={handleCondition}
+            />
             <label>Length:</label>
-            <input type="text" name="length" />
+            <input
+              type="text"
+              name="length"
+              value={length}
+              onChange={handleLength}
+            />
             <label>Beam:</label>
-            <input type="text" name="beam" />
+            <input type="text" name="beam" value={beam} onChange={handleBeam} />
             <label>Draught:</label>
-            <input type="text" name="draught" />
+            <input
+              type="text"
+              name="draught"
+              value={draught}
+              onChange={handleDraught}
+            />
             <label>Displacement:</label>
-            <input type="text" name="displacement" />
+            <input
+              type="text"
+              name="displacement"
+              value={displacement}
+              onChange={handleDisplacement}
+            />
             <label>Material:</label>
-            <input type="text" name="material" />
+            <input
+              type="text"
+              name="material"
+              value={material}
+              onChange={handleMaterial}
+            />
             <label>Steering:</label>
-            <input type="text" name="steering" />
+            <input
+              type="text"
+              name="steering"
+              value={steering}
+              onChange={handleSteering}
+            />
             <label>Keel:</label>
-            <input type="text" name="keel" />
+            <input type="text" name="keel" value={keel} onChange={handleKeel} />
             <label>Ballast:</label>
-            <input type="text" name="ballast" />
+            <input
+              type="text"
+              name="ballast"
+              value={ballast}
+              onChange={handleBallast}
+            />
             <label>Headroom:</label>
-            <input type="text" name="headroom" />
+            <input
+              type="text"
+              name="headroom"
+              value={headroom}
+              onChange={handleHeadroom}
+            />
             <label>Cabins:</label>
-            <input type="text" name="cabins" />
+            <input
+              type="text"
+              name="cabins"
+              value={cabins}
+              onChange={handleCabins}
+            />
             <label>Berths:</label>
-            <input type="text" name="berths" />
+            <input
+              type="text"
+              name="berths"
+              value={berths}
+              onChange={handleBerths}
+            />
             <label>Watertank:</label>
-            <input type="text" name="watertank" />
+            <input
+              type="text"
+              name="watertank"
+              value={watertank}
+              onChange={handleWatertank}
+            />
             <label>Propulsion:</label>
-            <input type="text" name="propulsion" />
+            <input
+              type="text"
+              name="propulsion"
+              value={propulsion}
+              onChange={handlePropulsion}
+            />
             <label>Engine:</label>
-            <input type="text" name="engine" />
+            <input
+              type="text"
+              name="engine"
+              value={engine}
+              onChange={handleEngine}
+            />
             <label>Fuel type:</label>
-            <input type="text" name="fuelType" />
+            <input
+              type="text"
+              name="fuelType"
+              value={fuelType}
+              onChange={handleFueltype}
+            />
           </div>
           <label>Description:</label>
           <textarea
@@ -159,6 +325,14 @@ const AddBoat = () => {
             name="country"
             value={country}
             onChange={handleCountry}
+          />
+
+          <label>Price</label>
+          <input
+            type="text"
+            name="price"
+            value={price}
+            onChange={handlePrice}
           />
 
           <label htmlFor="files" label="Upload">

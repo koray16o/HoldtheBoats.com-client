@@ -36,7 +36,8 @@ const Boats = () => {
         boats.map(boat => {
           return (
             <div key={boat._id} className="boatCard">
-              <h1>{boat.title}</h1>
+              <h1>Name: {boat.title}</h1>
+              <h1>Price: {boat.price}</h1>
               {Array.isArray(boat.imgURL) ? (
                 boat.imgURL.map(url => (
                   <img src={url} key={url} alt="Boat" width={250} />

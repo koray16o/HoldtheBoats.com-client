@@ -11,6 +11,7 @@ const EditBoat = () => {
   const [form, setForm] = useState('');
   const [description, setDescription] = useState('');
   const [country, setCountry] = useState('');
+  const [price, setPrice] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ const EditBoat = () => {
         setForm(response.data.form);
         setDescription(response.data.description);
         setCountry(response.data.country);
+        setPrice(response.data.price);
       } catch (error) {
         console.log('Error fetching boat', error);
       }
@@ -49,6 +51,9 @@ const EditBoat = () => {
   const handleCountry = e => {
     setCountry(e.target.value);
   };
+  const handlePrice = e => {
+    setPrice(e.target.value);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -60,6 +65,7 @@ const EditBoat = () => {
         form,
         description,
         country,
+        price,
         _id: id
       };
       if (!image || image.length === 0) {
@@ -89,6 +95,7 @@ const EditBoat = () => {
     setForm('');
     setDescription('');
     setCountry('');
+    setPrice('');
   };
 
   return (
@@ -118,10 +125,10 @@ const EditBoat = () => {
           <label>Type:</label>
           <select name="type" onChange={handleType}>
             <option value="none"></option>
-            <option value="sailboat">Sailboats</option>
-            <option value="powerboat">Powerboats</option>
-            <option value="classicboat">Classicboats</option>
-            <option value="dinghy">Dinghy</option>
+            <option value="Sail Boat">Sailboats</option>
+            <option value="Power Boat">Powerboats</option>
+            <option value="Classic Boat">Classicboats</option>
+            <option value="Dinghy">Dinghy</option>
           </select>
 
           <div onChange={handleForm}>
@@ -176,6 +183,13 @@ const EditBoat = () => {
             name="country"
             value={country}
             onChange={handleCountry}
+          />
+          <label>Price:</label>
+          <input
+            type="text"
+            name="price"
+            value={price}
+            onChange={handlePrice}
           />
 
           <label htmlFor="files" label="Upload">
