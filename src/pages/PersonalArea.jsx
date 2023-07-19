@@ -3,13 +3,12 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
   MenuGroup,
   MenuDivider,
   Button
 } from '@chakra-ui/react';
-/* import { Navigate } from 'react-router-dom';
- */
+import { NavBtnLink } from '../components/NavbarElements';
+
 const PersonalArea = () => {
   return (
     <div>
@@ -19,30 +18,14 @@ const PersonalArea = () => {
         </MenuButton>
         <MenuList>
           <MenuGroup title="Profile">
-            <MenuItem>My Profile</MenuItem>
-            <MenuItem>
-              {/* <Navigate to="/boats/ads"> */}My Ads
-              {/*               </Navigate>
-               */}{' '}
-            </MenuItem>
-            <MenuItem>
-              {/* <Navigate to="/favboats"> */}Favourite Boats
-              {/*               </Navigate>{' '}
-               */}{' '}
-            </MenuItem>
-            <MenuItem>
-              {/* <Navigate to="/newboat"> */}Create Boats
-              {/*  </Navigate>{' '} */}
-            </MenuItem>
+            <NavBtnLink to="/profile/:id">My Profile</NavBtnLink>
+            <NavBtnLink to="boats/ads">My Ads</NavBtnLink>
+            <NavBtnLink to="/favboats">Favourite Boats</NavBtnLink>
+            <NavBtnLink to="/newboat">Create Boats</NavBtnLink>
           </MenuGroup>
           <MenuDivider />
           <MenuGroup title="Help">
-            <MenuItem>
-              {' '}
-              {/*               <Navigate to="/faq" />
-               */}{' '}
-              FAQ
-            </MenuItem>
+            <NavBtnLink to="/faq">FAQ</NavBtnLink>
           </MenuGroup>
         </MenuList>
       </Menu>
