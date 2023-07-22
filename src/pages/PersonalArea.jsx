@@ -19,7 +19,7 @@ const PersonalArea = () => {
         <MenuList>
           <MenuGroup title="Profile">
             <NavBtnLink to="/profile/:id">My Profile</NavBtnLink>
-            <NavBtnLink to="boats/ads">My Ads</NavBtnLink>
+            <NavBtnLink to="/boats/ads">My Ads</NavBtnLink>
             <NavBtnLink to="/favboats">Favourite Boats</NavBtnLink>
             <NavBtnLink to="/newboat">Create Boats</NavBtnLink>
           </MenuGroup>

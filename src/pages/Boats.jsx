@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react';
 import { getAllBoats } from '../api/boats.api';
-import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { NavBtnLink } from '../components/NavbarElements';
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Stack,
+  Heading,
+  Text,
+  Divider,
+  Button,
+  ButtonGroup
+} from '@chakra-ui/react';
 
 const Boats = () => {
   const [boats, setBoats] = useState([]);
@@ -35,17 +46,43 @@ const Boats = () => {
       {boats &&
         boats.map(boat => {
           return (
-            <div key={boat._id} className="boatCard">
-              <h1>Name: {boat.title}</h1>
-              <h1>Price: {boat.price}</h1>
-              {Array.isArray(boat.imgURL) ? (
-                boat.imgURL.map(url => (
-                  <img src={url} key={url} alt="Boat" width={250} />
-                ))
-              ) : (
-                <img src={boat.imgURL} alt="Boat" width={250} />
-              )}
-              <Link to={`/boats/${boat._id}`}>See more Details</Link>
+            <div key={boat.card}>
+              <Card maxW="sm">
+                <CardBody>
+                  {Array.isArray(boat.imgURL) ? (
+                    boat.imgURL.map(url => (
+                      <img src={url} key={url} alt="Boat" width={250} />
+                    ))
+                  ) : (
+                    <img src={boat.imgURL} alt="Boat" width={250} />
+                  )}
+
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md">{boat.title}</Heading>
+                    <Text>{boat.description}</Text>
+                    <Text color="blue.600" fontSize="2xl">
+                      {boat.price}€
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <Divider />
+                <CardFooter>
+                  <ButtonGroup spacing="2">
+                    <NavBtnLink
+                      to={`/boats/${boat._id}`}
+                      style={{
+                        color: 'white',
+                        backgroundColor: 'lightskyblue'
+                      }}
+                    >
+                      See more details
+                    </NavBtnLink>
+                    <Button variant="ghost" colorScheme="blue">
+                      Add to Favourites
+                    </Button>
+                  </ButtonGroup>
+                </CardFooter>
+              </Card>
             </div>
           );
         })}

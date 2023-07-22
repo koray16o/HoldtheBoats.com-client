@@ -29,17 +29,11 @@ const Navbar = ({ onSearch }) => {
           style={{
             display: 'flex',
             flexWrap: 'nowrap',
-            justifyContent: 'space-around'
+            justifyContent: 'flex-start',
+            flexDirection: 'row-reverse',
+            marginRight: '40px'
           }}
         >
-          <div
-            className="greetingUser"
-            style={{
-              display: 'flex',
-              justifyContent: 'center'
-            }}
-          ></div>
-          Hello User!
           <div>
             <NavBtnLink
               onClick={logOutUser}
@@ -58,7 +52,13 @@ const Navbar = ({ onSearch }) => {
       <Nav>
         <Bars />
 
-        <NavMenu>
+        <NavMenu
+          style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            flexDirection: 'row'
+          }}
+        >
           <NavLink to="/" activestyle="true">
             Home
           </NavLink>
@@ -72,7 +72,11 @@ const Navbar = ({ onSearch }) => {
           <NavBtnLink
             type="submit"
             to="/newboat"
-            style={{ backgroundColor: 'lightcoral', color: 'white' }}
+            style={{
+              backgroundColor: 'lightcoral',
+              color: 'white',
+              width: 323
+            }}
           >
             Publish your Ad
           </NavBtnLink>
@@ -98,6 +102,7 @@ const Navbar = ({ onSearch }) => {
                 className="btn btn-outline-success"
                 type="submit"
                 style={{ color: 'white', backgroundColor: 'lightcoral' }}
+                to="/search"
               >
                 Search
               </NavBtnLink>

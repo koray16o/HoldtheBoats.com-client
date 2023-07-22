@@ -22,7 +22,6 @@ const Search = () => {
 
   return (
     <div>
-      <h1>Search</h1>
       <Navbar onSearch={handleSearch} />
 
       {searchResults.map(boat => (

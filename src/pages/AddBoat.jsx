@@ -8,7 +8,6 @@ const AddBoat = () => {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState();
   const [type, setType] = useState('');
-  const [form, setForm] = useState('');
   const [year, setYear] = useState('');
   const [condition, setCondition] = useState('');
   const [length, setLength] = useState('');
@@ -40,59 +39,56 @@ const AddBoat = () => {
   const handleType = e => {
     setType(e.target.value);
   };
-  const handleForm = e => {
-    setForm(e.target.value);
-  };
   const handleYear = e => {
-    setForm(e.target.value);
+    setYear(e.target.value);
   };
   const handleCondition = e => {
-    setForm(e.target.value);
+    setCondition(e.target.value);
   };
   const handleLength = e => {
-    setForm(e.target.value);
+    setLength(e.target.value);
   };
   const handleBeam = e => {
-    setForm(e.target.value);
+    setBeam(e.target.value);
   };
   const handleDraught = e => {
-    setForm(e.target.value);
+    setDraught(e.target.value);
   };
   const handleDisplacement = e => {
-    setForm(e.target.value);
+    setDisplacement(e.target.value);
   };
   const handleMaterial = e => {
-    setForm(e.target.value);
+    setMaterial(e.target.value);
   };
   const handleSteering = e => {
-    setForm(e.target.value);
+    setSteering(e.target.value);
   };
   const handleKeel = e => {
-    setForm(e.target.value);
+    setKeel(e.target.value);
   };
   const handleBallast = e => {
-    setForm(e.target.value);
+    setBallast(e.target.value);
   };
   const handleHeadroom = e => {
-    setForm(e.target.value);
+    setHeadroom(e.target.value);
   };
   const handleCabins = e => {
-    setForm(e.target.value);
+    setCabins(e.target.value);
   };
   const handleBerths = e => {
-    setForm(e.target.value);
+    setBerths(e.target.value);
   };
   const handleWatertank = e => {
-    setForm(e.target.value);
+    setWatertank(e.target.value);
   };
   const handlePropulsion = e => {
-    setForm(e.target.value);
+    setPropulsion(e.target.value);
   };
   const handleEngine = e => {
-    setForm(e.target.value);
+    setEngine(e.target.value);
   };
   const handleFueltype = e => {
-    setForm(e.target.value);
+    setFueltype(e.target.value);
   };
   const handleDescription = e => {
     setDescription(e.target.value);
@@ -111,7 +107,23 @@ const AddBoat = () => {
       const newBoat = {
         title,
         type,
-        form,
+        year,
+        condition,
+        length,
+        beam,
+        draught,
+        displacement,
+        material,
+        steering,
+        keel,
+        ballast,
+        headroom,
+        cabins,
+        berths,
+        watertank,
+        propulsion,
+        engine,
+        fuelType,
         description,
         country,
         price
@@ -140,7 +152,6 @@ const AddBoat = () => {
     setTitle('');
     setImage();
     setType('');
-    setForm('');
     setYear('');
     setCondition('');
     setLength('');
@@ -198,118 +209,117 @@ const AddBoat = () => {
             <option value="Dinghy">Dinghy</option>
           </select>
 
-          <div name="form" onChange={handleForm}>
-            <label>Built in:</label>
-            <input
-              type="number"
-              name="builtIn"
-              value={year}
-              onChange={handleYear}
-            />
+          <label>Built in:</label>
+          <input
+            type="number"
+            name="builtIn"
+            value={year}
+            onChange={handleYear}
+          />
 
-            <label>Condition:</label>
-            <input
-              type="text"
-              name="condition"
-              value={condition}
-              onChange={handleCondition}
-            />
-            <label>Length:</label>
-            <input
-              type="text"
-              name="length"
-              value={length}
-              onChange={handleLength}
-            />
-            <label>Beam:</label>
-            <input type="text" name="beam" value={beam} onChange={handleBeam} />
-            <label>Draught:</label>
-            <input
-              type="text"
-              name="draught"
-              value={draught}
-              onChange={handleDraught}
-            />
-            <label>Displacement:</label>
-            <input
-              type="text"
-              name="displacement"
-              value={displacement}
-              onChange={handleDisplacement}
-            />
-            <label>Material:</label>
-            <input
-              type="text"
-              name="material"
-              value={material}
-              onChange={handleMaterial}
-            />
-            <label>Steering:</label>
-            <input
-              type="text"
-              name="steering"
-              value={steering}
-              onChange={handleSteering}
-            />
-            <label>Keel:</label>
-            <input type="text" name="keel" value={keel} onChange={handleKeel} />
-            <label>Ballast:</label>
-            <input
-              type="text"
-              name="ballast"
-              value={ballast}
-              onChange={handleBallast}
-            />
-            <label>Headroom:</label>
-            <input
-              type="text"
-              name="headroom"
-              value={headroom}
-              onChange={handleHeadroom}
-            />
-            <label>Cabins:</label>
-            <input
-              type="text"
-              name="cabins"
-              value={cabins}
-              onChange={handleCabins}
-            />
-            <label>Berths:</label>
-            <input
-              type="text"
-              name="berths"
-              value={berths}
-              onChange={handleBerths}
-            />
-            <label>Watertank:</label>
-            <input
-              type="text"
-              name="watertank"
-              value={watertank}
-              onChange={handleWatertank}
-            />
-            <label>Propulsion:</label>
-            <input
-              type="text"
-              name="propulsion"
-              value={propulsion}
-              onChange={handlePropulsion}
-            />
-            <label>Engine:</label>
-            <input
-              type="text"
-              name="engine"
-              value={engine}
-              onChange={handleEngine}
-            />
-            <label>Fuel type:</label>
-            <input
-              type="text"
-              name="fuelType"
-              value={fuelType}
-              onChange={handleFueltype}
-            />
-          </div>
+          <label>Condition:</label>
+          <input
+            type="text"
+            name="condition"
+            value={condition}
+            onChange={handleCondition}
+          />
+          <label>Length:</label>
+          <input
+            type="text"
+            name="length"
+            value={length}
+            onChange={handleLength}
+          />
+          <label>Beam:</label>
+          <input type="text" name="beam" value={beam} onChange={handleBeam} />
+          <label>Draught:</label>
+          <input
+            type="text"
+            name="draught"
+            value={draught}
+            onChange={handleDraught}
+          />
+          <label>Displacement:</label>
+          <input
+            type="text"
+            name="displacement"
+            value={displacement}
+            onChange={handleDisplacement}
+          />
+          <label>Material:</label>
+          <input
+            type="text"
+            name="material"
+            value={material}
+            onChange={handleMaterial}
+          />
+          <label>Steering:</label>
+          <input
+            type="text"
+            name="steering"
+            value={steering}
+            onChange={handleSteering}
+          />
+          <label>Keel:</label>
+          <input type="text" name="keel" value={keel} onChange={handleKeel} />
+          <label>Ballast:</label>
+          <input
+            type="text"
+            name="ballast"
+            value={ballast}
+            onChange={handleBallast}
+          />
+          <label>Headroom:</label>
+          <input
+            type="text"
+            name="headroom"
+            value={headroom}
+            onChange={handleHeadroom}
+          />
+          <label>Cabins:</label>
+          <input
+            type="text"
+            name="cabins"
+            value={cabins}
+            onChange={handleCabins}
+          />
+          <label>Berths:</label>
+          <input
+            type="text"
+            name="berths"
+            value={berths}
+            onChange={handleBerths}
+          />
+          <label>Watertank:</label>
+          <input
+            type="text"
+            name="watertank"
+            value={watertank}
+            onChange={handleWatertank}
+          />
+          <label>Propulsion:</label>
+          <input
+            type="text"
+            name="propulsion"
+            value={propulsion}
+            onChange={handlePropulsion}
+          />
+          <label>Engine:</label>
+          <input
+            type="text"
+            name="engine"
+            value={engine}
+            onChange={handleEngine}
+          />
+          <label>Fuel type:</label>
+          <input
+            type="text"
+            name="fuelType"
+            value={fuelType}
+            onChange={handleFueltype}
+          />
+
           <label>Description:</label>
           <textarea
             rows={4}
