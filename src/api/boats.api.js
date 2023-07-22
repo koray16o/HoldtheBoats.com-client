@@ -39,3 +39,7 @@ export const deleteBoat = id => {
 export const upload = uploadData => {
   return axios.post(`${baseURL}/upload`, uploadData);
 };
+
+export const search = search => {
+  return axios.post(`${baseURL}/search`, search);
+};

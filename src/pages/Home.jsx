@@ -41,6 +41,30 @@ const Home = () => {
 
         <hr />
 
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around',
+            alignItems: 'flex-start',
+            alignContent: 'flex-start'
+          }}
+        >
+          <h3>Welcome to Holdtheboats</h3>
+          <h5>Here you can find your dream boat!</h5>
+          <img
+            src="https://image.freepik.com/vecteurs-libre/logo-voilier_74218-100.jpg"
+            width={300}
+          />
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <h5>
+            <b>Featured Boats of the week</b>
+          </h5>
+        </div>
+
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           {boats && (
             <Carousel style={{ width: 300, height: 300 }}>
@@ -70,7 +94,7 @@ const Home = () => {
                               to={`/boats/${boat._id}`}
                               style={{
                                 color: 'white',
-                                backgroundColor: 'lightskyblue'
+                                backgroundColor: 'blue'
                               }}
                             >
                               See more details

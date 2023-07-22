@@ -2,16 +2,21 @@ import PersonalArea from '../pages/PersonalArea';
 import { Nav, NavLink, Bars, NavMenu, NavBtnLink } from './NavbarElements';
 import { AuthContext } from '../context/AuthContext';
 import { useState, useContext } from 'react';
+import { search } from '../api/boats.api';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ onSearch }) => {
+const Navbar = () => {
   const { logOutUser } = useContext(AuthContext);
   const [searchBoats, setSearchBoats] = useState('');
+  const navigate = useNavigate();
 
-  const handleSearch = e => {
+  const handleSearch = async e => {
     e.preventDefault();
-    onSearch(searchBoats);
+    const response = await search({ search: searchBoats });
+    navigate('/search', { state: response.data.boats });
   };
   const handleChange = e => {
+    console.log(e.target.value);
     setSearchBoats(e.target.value);
   };
 
@@ -97,15 +102,15 @@ const Navbar = ({ onSearch }) => {
                 aria-label="Search"
                 value={searchBoats}
                 onChange={handleChange}
+                name="search"
               />
-              <NavBtnLink
+              <button
                 className="btn btn-outline-success"
                 type="submit"
                 style={{ color: 'white', backgroundColor: 'lightcoral' }}
-                to="/search"
               >
                 Search
-              </NavBtnLink>
+              </button>
             </form>
           </div>
         </NavMenu>
