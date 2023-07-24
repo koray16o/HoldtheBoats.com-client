@@ -17,3 +17,13 @@ export const verify = storedToken => {
     }
   });
 };
+
+export const forgotPassword = email => {
+  return axios.post(`${baseURL}/forgot-password`, { email });
+};
+export const resetPassword = (resetToken, newPassword) => {
+  return axios.post(`${baseURL}/reset-password`, {
+    resetToken,
+    newPassword
+  });
+};

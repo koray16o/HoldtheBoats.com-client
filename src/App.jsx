@@ -13,6 +13,8 @@ import EditBoat from './pages/EditBoat';
 import BoatDetails from './pages/BoatDetails';
 import EditUserProfile from './pages/EditUserProfile';
 import UserProfile from './pages/UserProfile';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/boats" element={<Boats />} />
         <Route path="/search" element={<Search />} />

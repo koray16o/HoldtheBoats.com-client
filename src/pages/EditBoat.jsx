@@ -1,10 +1,12 @@
 import Navbar from '../components/Navbar';
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { getBoat, updateBoat, upload } from '../api/boats.api';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../context/AuthContext';
 
 const EditBoat = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState();
   const [type, setType] = useState('');
@@ -98,121 +100,125 @@ const EditBoat = () => {
     setPrice('');
   };
 
-  return (
-    <div>
-      <Navbar />
-
+  if (isLoggedIn) {
+    return (
       <div>
-        <h1
-          style={{
-            marginTop: '30px',
-            display: 'flex',
-            justifyContent: 'center'
-          }}
-        >
-          <b>Edit Boat</b>
-        </h1>
-        <hr style={{ marginTop: '15px', marginBottom: '15px' }} />
-        <form onSubmit={handleSubmit}>
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleTitle}
-          />
+        <Navbar />
 
-          <label>Type:</label>
-          <select name="type" onChange={handleType}>
-            <option value="none"></option>
-            <option value="Sail Boat">Sailboats</option>
-            <option value="Power Boat">Powerboats</option>
-            <option value="Classic Boat">Classicboats</option>
-            <option value="Dinghy">Dinghy</option>
-          </select>
-
-          <div onChange={handleForm}>
-            <label>Built in:</label>
-            <input type="number" name="builtIn" />
-
-            <label>Condition:</label>
-            <input type="text" name="condition" />
-            <label>Length:</label>
-            <input type="text" name="length" />
-            <label>Beam:</label>
-            <input type="text" name="beam" />
-            <label>Draught:</label>
-            <input type="text" name="draught" />
-            <label>Displacement:</label>
-            <input type="text" name="displacement" />
-            <label>Material:</label>
-            <input type="text" name="material" />
-            <label>Steering:</label>
-            <input type="text" name="steering" />
-            <label>Keel:</label>
-            <input type="text" name="keel" />
-            <label>Ballast:</label>
-            <input type="text" name="ballast" />
-            <label>Headroom:</label>
-            <input type="text" name="headroom" />
-            <label>Cabins:</label>
-            <input type="text" name="cabins" />
-            <label>Berths:</label>
-            <input type="text" name="berths" />
-            <label>Watertank:</label>
-            <input type="text" name="watertank" />
-            <label>Propulsion:</label>
-            <input type="text" name="propulsion" />
-            <label>Engine:</label>
-            <input type="text" name="engine" />
-            <label>Fuel type:</label>
-            <input type="text" name="fuelType" />
-          </div>
-          <label>Description:</label>
-          <textarea
-            rows={4}
-            type="text"
-            name="description"
-            value={description}
-            onChange={handleDescription}
-          />
-
-          <label>Country:</label>
-          <input
-            type="text"
-            name="country"
-            value={country}
-            onChange={handleCountry}
-          />
-          <label>Price:</label>
-          <input
-            type="text"
-            name="price"
-            value={price}
-            onChange={handlePrice}
-          />
-
-          <label htmlFor="files" label="Upload">
-            Upload files:
-          </label>
-          <input
-            type="file"
-            id="files"
-            name="files"
-            onChange={handleImage}
-            multiple
-          />
-
-          <button
-            type="submit"
-            style={{ backgroundColor: 'lightblue', color: 'red' }}
+        <div>
+          <h1
+            style={{
+              marginTop: '30px',
+              display: 'flex',
+              justifyContent: 'center'
+            }}
           >
-            Submit
-          </button>
-        </form>
+            <b>Edit Boat</b>
+          </h1>
+          <hr style={{ marginTop: '15px', marginBottom: '15px' }} />
+          <form onSubmit={handleSubmit}>
+            <label>Title:</label>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleTitle}
+            />
+
+            <label>Type:</label>
+            <select name="type" onChange={handleType}>
+              <option value="none"></option>
+              <option value="Sail Boat">Sailboats</option>
+              <option value="Power Boat">Powerboats</option>
+              <option value="Classic Boat">Classicboats</option>
+              <option value="Dinghy">Dinghy</option>
+            </select>
+
+            <div onChange={handleForm}>
+              <label>Built in:</label>
+              <input type="number" name="builtIn" />
+
+              <label>Condition:</label>
+              <input type="text" name="condition" />
+              <label>Length:</label>
+              <input type="text" name="length" />
+              <label>Beam:</label>
+              <input type="text" name="beam" />
+              <label>Draught:</label>
+              <input type="text" name="draught" />
+              <label>Displacement:</label>
+              <input type="text" name="displacement" />
+              <label>Material:</label>
+              <input type="text" name="material" />
+              <label>Steering:</label>
+              <input type="text" name="steering" />
+              <label>Keel:</label>
+              <input type="text" name="keel" />
+              <label>Ballast:</label>
+              <input type="text" name="ballast" />
+              <label>Headroom:</label>
+              <input type="text" name="headroom" />
+              <label>Cabins:</label>
+              <input type="text" name="cabins" />
+              <label>Berths:</label>
+              <input type="text" name="berths" />
+              <label>Watertank:</label>
+              <input type="text" name="watertank" />
+              <label>Propulsion:</label>
+              <input type="text" name="propulsion" />
+              <label>Engine:</label>
+              <input type="text" name="engine" />
+              <label>Fuel type:</label>
+              <input type="text" name="fuelType" />
+            </div>
+            <label>Description:</label>
+            <textarea
+              rows={4}
+              type="text"
+              name="description"
+              value={description}
+              onChange={handleDescription}
+            />
+
+            <label>Country:</label>
+            <input
+              type="text"
+              name="country"
+              value={country}
+              onChange={handleCountry}
+            />
+            <label>Price:</label>
+            <input
+              type="text"
+              name="price"
+              value={price}
+              onChange={handlePrice}
+            />
+
+            <label htmlFor="files" label="Upload">
+              Upload files:
+            </label>
+            <input
+              type="file"
+              id="files"
+              name="files"
+              onChange={handleImage}
+              multiple
+            />
+
+            <button
+              type="submit"
+              style={{ backgroundColor: 'lightblue', color: 'red' }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <Navigate to="/login" />;
+  }
 };
 
 export default EditBoat;

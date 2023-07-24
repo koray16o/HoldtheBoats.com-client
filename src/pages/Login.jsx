@@ -10,11 +10,10 @@ import {
   FormLabel,
   Input,
   Stack,
-  Link,
   Button,
   Heading
 } from '@chakra-ui/react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -93,8 +92,10 @@ const Login = () => {
                   align={'start'}
                   justify={'space-between'}
                 >
-                  <Link color={'blue.400'}>Forgot password?</Link>
-                  <Link to={'/signup'} color={'blue.400'}>
+                  <Link to="/forgot-password" style={{ color: 'blue' }}>
+                    Forgot password?
+                  </Link>
+                  <Link to="/signup" style={{ color: 'blue' }}>
                     Don&apos;t have an account?
                   </Link>
                 </Stack>
