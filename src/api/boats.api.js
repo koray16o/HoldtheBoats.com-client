@@ -28,12 +28,16 @@ export const addBoat = boat => {
   return axios.post(`${baseURL}/newboat`, boat);
 };
 
-export const updateBoat = updatedBoat => {
-  return axios.put(`${baseURL}/boats/${updatedBoat._id}`, updatedBoat);
+export const updateBoat = (updatedBoat, userId) => {
+  return axios.put(`${baseURL}/boats/${updatedBoat._id}`, updatedBoat, {
+    data: { ownerId: userId }
+  });
 };
 
-export const deleteBoat = id => {
-  return axios.delete(`${baseURL}/boats/${id}`);
+export const deleteBoat = (id, userId) => {
+  return axios.delete(`${baseURL}/boats/${id}`, {
+    data: { ownerId: userId }
+  });
 };
 
 export const upload = uploadData => {

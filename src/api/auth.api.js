@@ -27,3 +27,11 @@ export const resetPassword = (resetToken, newPassword) => {
     newPassword
   });
 };
+
+export const contact = (email, userEmail, message) => {
+  return axios.post(`${baseURL}/contact-owner`, {
+    email,
+    userEmail,
+    message
+  });
+};
