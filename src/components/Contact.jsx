@@ -14,17 +14,17 @@ import {
 import { useRef, useState } from 'react';
 import { contact } from '../api/auth.api';
 
-const Contact = ({ email }) => {
+const Contact = ({ ownerEmail }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-  const [userEmail, setUserEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      console.log('Received data FE:', email, userEmail, message);
-      const response = await contact(email, userEmail, message);
+      console.log('Received data FE:', email, ownerEmail, message);
+      const response = await contact(email, ownerEmail, message);
       console.log('Email sent successfuly', response.data);
 
       onClose();
@@ -34,7 +34,7 @@ const Contact = ({ email }) => {
   };
 
   const handleEmail = e => {
-    setUserEmail(e.target.value);
+    setEmail(e.target.value);
   };
   const handleMessage = e => {
     setMessage(e.target.value);
@@ -61,7 +61,7 @@ const Contact = ({ email }) => {
             <Input
               placeholder="your-email@example.com"
               required
-              value={userEmail}
+              value={email}
               onChange={handleEmail}
             />
             <p>Message:</p>
