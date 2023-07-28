@@ -15,6 +15,7 @@ import {
   ButtonGroup
 } from '@chakra-ui/react';
 import { AuthContext } from '../context/AuthContext';
+import Footer from '../components/Footer';
 
 const Search = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -90,6 +91,7 @@ const Search = () => {
               </div>
             ))}
         </div>
+        <Footer />
       </div>
     );
   } else {

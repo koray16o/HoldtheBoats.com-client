@@ -47,3 +47,11 @@ export const upload = uploadData => {
 export const search = search => {
   return axios.post(`${baseURL}/search`, search);
 };
+
+export const getFavouriteBoats = boatId => {
+  return axios.get(`${baseURL}/boats/favourites`, boatId);
+};
+
+export const addToFavourites = boatId => {
+  return axios.post(`${baseURL}/boats/${boatId}/favourites`);
+};

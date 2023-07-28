@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { NavLink as Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,9 +7,12 @@ export const Nav = styled.nav`
   height: 65px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
+  padding: 0.2rem calc((100vw - 1000px) / 2);
   z-index: 12;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -31,12 +33,20 @@ export const Bars = styled(FaBars)`
   color: #808080;
   @media screen and (max-width: 768px) {
     display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 75%);
+    font-size: 1.8rem;
+    cursor: pointer;
   }
 `;
 
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
+  margin-right: -24px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -45,6 +55,8 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
+  margin-right: 24px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -62,68 +74,14 @@ export const NavBtnLink = styled(Link)`
   text-decoration: none;
   margin-left: 24px;
   &:hover {
+    transition: all 0.2s ease-in-out;
     background: #fff;
     color: #808080;
   }
+
   @media screen and (max-width: 768px) {
-    display: none;
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 8px 18px;
   }
 `;
-
-export const MobileMenu = styled.div`
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    background: #189ab4;
-    text-align: center;
-    position: absolute;
-    top: 65px;
-    left: 0;
-    right: 0;
-  }
-`;
-
-export const MobileMenuItem = styled(Link)`
-  color: #ffffff;
-  text-decoration: none;
-  padding: 1rem;
-  &:hover {
-    color: #ff2511;
-  }
-`;
-
-const Navbar = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-
-  const handleMobileMenuToggle = () => {
-    setShowMobileMenu(!showMobileMenu);
-  };
-
-  return (
-    <>
-      <Nav>
-        <NavLink to="/">Home</NavLink>
-        <Bars onClick={handleMobileMenuToggle} />
-        <NavMenu>
-          <NavLink to="/boats">Boats</NavLink>
-          {/* Add other navigation links here */}
-        </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/newboat">Publish your Ad</NavBtnLink>
-          {/* Add other buttons here */}
-        </NavBtn>
-      </Nav>
-      {showMobileMenu && (
-        <MobileMenu>
-          <MobileMenuItem to="/boats" onClick={handleMobileMenuToggle}>
-            Boats
-          </MobileMenuItem>
-          {/* Add other mobile menu items here */}
-        </MobileMenu>
-      )}
-    </>
-  );
-};
-
-export default Navbar;

@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar';
 import { AuthContext } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { useContext } from 'react';
+import Footer from '../components/Footer';
 
 const Faq = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -109,6 +110,7 @@ const Faq = () => {
             support team via email at holdtheboats.website@gmail.com.
           </p>
         </div>
+        <Footer />
       </div>
     );
   } else {

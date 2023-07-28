@@ -4,6 +4,8 @@ import { Link, useParams, useNavigate, Navigate } from 'react-router-dom';
 import { deleteBoat, getBoat } from '../api/boats.api';
 import { AuthContext } from '../context/AuthContext';
 import Contact from '../components/Contact';
+import Carousel from 'react-bootstrap/Carousel';
+import Footer from '../components/Footer';
 
 const BoatDetails = () => {
   const { isLoggedIn, userId, user } = useContext(AuthContext);
@@ -47,7 +49,7 @@ const BoatDetails = () => {
           <b>Boat details</b>
         </h1>
 
-        <div className="BoatDetails">
+        <div className="BoatDetails" style={{ marginLeft: '30px' }}>
           {boat && (
             <div key={boat._id}>
               {/* {boat.imgURL.length && (
@@ -63,7 +65,21 @@ const BoatDetails = () => {
                 ))}
               </div>
             )} */}
-              <img src={boat.imgURL} alt="" />
+              <Carousel slide={false}>
+                {boat.imgURL.length && (
+                  <Carousel.Item>
+                    {boat.imgURL.map(url => (
+                      <img
+                        src={url}
+                        alt="Boat"
+                        key={url}
+                        style={{ width: '750px' }}
+                      />
+                    ))}
+                  </Carousel.Item>
+                )}
+              </Carousel>
+
               <h5>Price: {boat.price}€</h5>
               <h5>Name: {boat.title}</h5>
               <h5>Type of Boat: {boat.type}</h5>
@@ -106,6 +122,7 @@ const BoatDetails = () => {
         <div>
           <Contact email={user.email} />
         </div>
+        <Footer />
       </div>
     );
   } else {

@@ -38,21 +38,7 @@ const Navbar = () => {
             flexDirection: 'row-reverse',
             marginRight: '40px'
           }}
-        >
-          <div>
-            <NavBtnLink
-              onClick={logOutUser}
-              style={{
-                display: 'flex',
-                flexDirection: 'row-reverse',
-                color: 'white',
-                backgroundColor: 'lightskyblue'
-              }}
-            >
-              Logout
-            </NavBtnLink>
-          </div>
-        </div>
+        ></div>
       </div>
       <Nav>
         <Bars />
@@ -112,6 +98,18 @@ const Navbar = () => {
                 Search
               </button>
             </form>
+
+            <NavBtnLink
+              onClick={logOutUser}
+              style={{
+                display: 'flex',
+                flexDirection: 'row-reverse',
+                color: 'white',
+                backgroundColor: 'lightskyblue'
+              }}
+            >
+              Logout
+            </NavBtnLink>
           </div>
         </NavMenu>
       </Nav>

@@ -4,13 +4,32 @@ import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { getBoat, updateBoat, upload } from '../api/boats.api';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Footer from '../components/Footer';
 
 const EditBoat = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState();
   const [type, setType] = useState('');
-  const [form, setForm] = useState('');
+  const [year, setYear] = useState('');
+  const [condition, setCondition] = useState('');
+  const [length, setLength] = useState('');
+  const [beam, setBeam] = useState('');
+  const [draught, setDraught] = useState('');
+  const [displacement, setDisplacement] = useState('');
+  const [material, setMaterial] = useState('');
+  const [steering, setSteering] = useState('');
+  const [keel, setKeel] = useState('');
+  const [ballast, setBallast] = useState('');
+  const [headroom, setHeadroom] = useState('');
+  const [cabins, setCabins] = useState('');
+  const [berths, setBerths] = useState('');
+  const [watertank, setWatertank] = useState('');
+  const [propulsion, setPropulsion] = useState('');
+  const [engine, setEngine] = useState('');
+  const [fuelType, setFueltype] = useState('');
   const [description, setDescription] = useState('');
   const [country, setCountry] = useState('');
   const [price, setPrice] = useState('');
@@ -24,7 +43,23 @@ const EditBoat = () => {
         setTitle(response.data.title);
         setImage(response.data.image);
         setType(response.data.type);
-        setForm(response.data.form);
+        setYear(response.data.year);
+        setCondition(response.data.condition);
+        setLength(response.data.length);
+        setBeam(response.data.beam);
+        setDraught(response.data.draught);
+        setDisplacement(response.data.displacement);
+        setMaterial(response.data.material);
+        setSteering(response.data.steering);
+        setKeel(response.data.keel);
+        setBallast(response.data.ballast);
+        setHeadroom(response.data.headroom);
+        setCabins(response.data.cabins);
+        setBerths(response.data.berths);
+        setWatertank(response.data.watertank);
+        setPropulsion(response.data.propulsion);
+        setEngine(response.data.engine);
+        setFueltype(response.data.fuelType);
         setDescription(response.data.description);
         setCountry(response.data.country);
         setPrice(response.data.price);
@@ -44,8 +79,56 @@ const EditBoat = () => {
   const handleType = e => {
     setType(e.target.value);
   };
-  const handleForm = e => {
-    setForm(e.target.value);
+  const handleYear = e => {
+    setYear(e.target.value);
+  };
+  const handleCondition = e => {
+    setCondition(e.target.value);
+  };
+  const handleLength = e => {
+    setLength(e.target.value);
+  };
+  const handleBeam = e => {
+    setBeam(e.target.value);
+  };
+  const handleDraught = e => {
+    setDraught(e.target.value);
+  };
+  const handleDisplacement = e => {
+    setDisplacement(e.target.value);
+  };
+  const handleMaterial = e => {
+    setMaterial(e.target.value);
+  };
+  const handleSteering = e => {
+    setSteering(e.target.value);
+  };
+  const handleKeel = e => {
+    setKeel(e.target.value);
+  };
+  const handleBallast = e => {
+    setBallast(e.target.value);
+  };
+  const handleHeadroom = e => {
+    setHeadroom(e.target.value);
+  };
+  const handleCabins = e => {
+    setCabins(e.target.value);
+  };
+  const handleBerths = e => {
+    setBerths(e.target.value);
+  };
+  const handleWatertank = e => {
+    setWatertank(e.target.value);
+  };
+  const handlePropulsion = e => {
+    setPropulsion(e.target.value);
+  };
+  const handleEngine = e => {
+    setEngine(e.target.value);
+  };
+  const handleFueltype = e => {
+    setFueltype(e.target.value);
   };
   const handleDescription = e => {
     setDescription(e.target.value);
@@ -64,7 +147,23 @@ const EditBoat = () => {
         title,
         image,
         type,
-        form,
+        year,
+        condition,
+        length,
+        beam,
+        draught,
+        displacement,
+        material,
+        steering,
+        keel,
+        ballast,
+        headroom,
+        cabins,
+        berths,
+        watertank,
+        propulsion,
+        engine,
+        fuelType,
         description,
         country,
         price,
@@ -94,7 +193,23 @@ const EditBoat = () => {
     setTitle('');
     setImage();
     setType('');
-    setForm('');
+    setYear('');
+    setCondition('');
+    setLength('');
+    setBeam('');
+    setDraught('');
+    setDisplacement('');
+    setMaterial('');
+    setSteering('');
+    setKeel('');
+    setBallast('');
+    setHeadroom('');
+    setCabins('');
+    setBerths('');
+    setWatertank('');
+    setPropulsion('');
+    setEngine('');
+    setFueltype('');
     setDescription('');
     setCountry('');
     setPrice('');
@@ -105,115 +220,283 @@ const EditBoat = () => {
       <div>
         <Navbar />
 
-        <div>
+        <div
+          style={{
+            backgroundImage: `url('https://i.pinimg.com/originals/f2/ac/81/f2ac81f39118c14d68c15fbbd253a40f.jpg')`
+          }}
+        >
           <h1
             style={{
-              marginTop: '30px',
               display: 'flex',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              color: 'white'
             }}
           >
             <b>Edit Boat</b>
           </h1>
           <hr style={{ marginTop: '15px', marginBottom: '15px' }} />
-          <form onSubmit={handleSubmit}>
-            <label>Title:</label>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={handleTitle}
-            />
+          <form
+            onSubmit={handleSubmit}
+            style={{ marginLeft: '30px', marginRight: '750px' }}
+          >
+            <Form.Group className="title">
+              <Form.Label>Title:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Title"
+                value={title}
+                onChange={handleTitle}
+              />
+            </Form.Group>
 
             <label>Type:</label>
-            <select name="type" onChange={handleType}>
+            <Form.Select aria-label="Select" name="type" onChange={handleType}>
               <option value="none"></option>
               <option value="Sail Boat">Sailboats</option>
               <option value="Power Boat">Powerboats</option>
               <option value="Classic Boat">Classicboats</option>
               <option value="Dinghy">Dinghy</option>
-            </select>
+            </Form.Select>
 
-            <div onChange={handleForm}>
-              <label>Built in:</label>
-              <input type="number" name="builtIn" />
+            <Form.Group className="builtIn">
+              <Form.Label>Built in:</Form.Label>
+              <Form.Control
+                type="number"
+                name="builtIn"
+                value={year}
+                onChange={handleYear}
+              />
+            </Form.Group>
 
-              <label>Condition:</label>
-              <input type="text" name="condition" />
-              <label>Length:</label>
-              <input type="text" name="length" />
-              <label>Beam:</label>
-              <input type="text" name="beam" />
-              <label>Draught:</label>
-              <input type="text" name="draught" />
-              <label>Displacement:</label>
-              <input type="text" name="displacement" />
-              <label>Material:</label>
-              <input type="text" name="material" />
-              <label>Steering:</label>
-              <input type="text" name="steering" />
-              <label>Keel:</label>
-              <input type="text" name="keel" />
-              <label>Ballast:</label>
-              <input type="text" name="ballast" />
-              <label>Headroom:</label>
-              <input type="text" name="headroom" />
-              <label>Cabins:</label>
-              <input type="text" name="cabins" />
-              <label>Berths:</label>
-              <input type="text" name="berths" />
-              <label>Watertank:</label>
-              <input type="text" name="watertank" />
-              <label>Propulsion:</label>
-              <input type="text" name="propulsion" />
-              <label>Engine:</label>
-              <input type="text" name="engine" />
-              <label>Fuel type:</label>
-              <input type="text" name="fuelType" />
-            </div>
-            <label>Description:</label>
-            <textarea
-              rows={4}
-              type="text"
-              name="description"
-              value={description}
-              onChange={handleDescription}
-            />
+            <Form.Group className="condition">
+              <Form.Label>Condition:</Form.Label>
+              <Form.Control
+                type="text"
+                name="condition"
+                placeholder="Condition"
+                value={condition}
+                onChange={handleCondition}
+              />
+            </Form.Group>
 
-            <label>Country:</label>
-            <input
-              type="text"
-              name="country"
-              value={country}
-              onChange={handleCountry}
-            />
-            <label>Price:</label>
-            <input
-              type="text"
-              name="price"
-              value={price}
-              onChange={handlePrice}
-            />
+            <Form.Group className="length">
+              <Form.Label>Length:</Form.Label>
+              <Form.Control
+                type="text"
+                name="length"
+                placeholder="Length (meters)"
+                value={length}
+                onChange={handleLength}
+              />
+            </Form.Group>
+            <Form.Group className="beam">
+              <Form.Label>Beam:</Form.Label>
+              <Form.Control
+                type="text"
+                name="beam"
+                placeholder="Beam (meters)"
+                value={beam}
+                onChange={handleBeam}
+              />
+            </Form.Group>
 
-            <label htmlFor="files" label="Upload">
-              Upload files:
-            </label>
-            <input
-              type="file"
-              id="files"
-              name="files"
-              onChange={handleImage}
-              multiple
-            />
+            <Form.Group className="draught">
+              <Form.Label>Draught:</Form.Label>
+              <Form.Control
+                type="text"
+                name="draught"
+                placeholder="Draught (meters)"
+                value={draught}
+                onChange={handleDraught}
+              />
+            </Form.Group>
 
-            <button
+            <Form.Group className="displacement">
+              <Form.Label>Displacement:</Form.Label>
+              <Form.Control
+                type="text"
+                name="displacement"
+                placeholder="Displacement (Kg)"
+                value={displacement}
+                onChange={handleDisplacement}
+              />
+            </Form.Group>
+
+            <Form.Group className="ballast">
+              <Form.Label>Ballast:</Form.Label>
+              <Form.Control
+                type="text"
+                name="ballast"
+                placeholder="Ballast (Kg)"
+                value={ballast}
+                onChange={handleBallast}
+              />
+            </Form.Group>
+
+            <Form.Group className="material">
+              <Form.Label>Material:</Form.Label>
+              <Form.Control
+                type="text"
+                name="material"
+                placeholder="Material"
+                value={material}
+                onChange={handleMaterial}
+              />
+            </Form.Group>
+
+            <Form.Group className="steering">
+              <Form.Label>Steering:</Form.Label>
+              <Form.Control
+                type="text"
+                name="steering"
+                placeholder="Steering"
+                value={steering}
+                onChange={handleSteering}
+              />
+            </Form.Group>
+
+            <Form.Group className="keel">
+              <Form.Label>Keel:</Form.Label>
+              <Form.Control
+                type="text"
+                name="keel"
+                placeholder="Keel"
+                value={keel}
+                onChange={handleKeel}
+              />
+            </Form.Group>
+
+            <Form.Group className="headroom">
+              <Form.Label>Headroom:</Form.Label>
+              <Form.Control
+                type="text"
+                name="headroom"
+                placeholder="Headroom (meters)"
+                value={headroom}
+                onChange={handleHeadroom}
+              />
+            </Form.Group>
+
+            <Form.Group className="cabins">
+              <Form.Label>Cabins:</Form.Label>
+              <Form.Control
+                type="text"
+                name="cabins"
+                placeholder="Nº of Cabins"
+                value={cabins}
+                onChange={handleCabins}
+              />
+            </Form.Group>
+
+            <Form.Group className="berths">
+              <Form.Label>Beam:</Form.Label>
+              <Form.Control
+                type="text"
+                name="berths"
+                placeholder="Nº of Berths"
+                value={berths}
+                onChange={handleBerths}
+              />
+            </Form.Group>
+
+            <Form.Group className="watertank">
+              <Form.Label>Water Tank:</Form.Label>
+              <Form.Control
+                type="text"
+                name="watertank"
+                placeholder="Watertank (Liters)"
+                value={watertank}
+                onChange={handleWatertank}
+              />
+            </Form.Group>
+
+            <Form.Group className="propulsion">
+              <Form.Label>Propulsion:</Form.Label>
+              <Form.Control
+                type="text"
+                name="propulsion"
+                placeholder="E.g. Intraboard"
+                value={propulsion}
+                onChange={handlePropulsion}
+              />
+            </Form.Group>
+
+            <Form.Group className="engine">
+              <Form.Label>Engine:</Form.Label>
+              <Form.Control
+                type="text"
+                name="engine"
+                placeholder="Engine Model"
+                value={engine}
+                onChange={handleEngine}
+              />
+            </Form.Group>
+
+            <Form.Group className="fuelType">
+              <Form.Label>Fuel Type:</Form.Label>
+              <Form.Control
+                type="text"
+                name="fuelType"
+                placeholder="E.g. Diesel"
+                value={fuelType}
+                onChange={handleFueltype}
+              />
+            </Form.Group>
+
+            <Form.Group className="description">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                type="text"
+                name="description"
+                value={description}
+                onChange={handleDescription}
+              />
+            </Form.Group>
+
+            <Form.Group className="country">
+              <Form.Label>Country:</Form.Label>
+              <Form.Control
+                type="text"
+                name="country"
+                placeholder="Country"
+                value={country}
+                onChange={handleCountry}
+              />
+            </Form.Group>
+
+            <Form.Group className="price">
+              <Form.Label>Price:</Form.Label>
+              <Form.Control
+                type="text"
+                name="price"
+                placeholder="Price (Euros)"
+                value={price}
+                onChange={handlePrice}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" htmlFor="files" label="Upload">
+              <Form.Label>Upload files:</Form.Label>
+              <Form.Control
+                type="file"
+                id="files"
+                name="files"
+                onChange={handleImage}
+                multiple
+              />
+            </Form.Group>
+
+            <Button
+              as="input"
               type="submit"
-              style={{ backgroundColor: 'lightblue', color: 'red' }}
-            >
-              Submit
-            </button>
+              value="Submit"
+              style={{ marginBottom: '50px' }}
+            />
           </form>
         </div>
+        <Footer />
       </div>
     );
   } else {

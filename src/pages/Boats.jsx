@@ -15,6 +15,8 @@ import {
 } from '@chakra-ui/react';
 import { AuthContext } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { addToFavourites } from '../api/boats.api';
+import Footer from '../components/Footer';
 
 const Boats = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -26,6 +28,14 @@ const Boats = () => {
       setBoats(response.data);
     } catch (error) {
       console.log('Error fetching boats', error);
+    }
+  };
+
+  const handleAddToFavourites = async boatId => {
+    try {
+      await addToFavourites(boatId);
+    } catch (error) {
+      console.log('Error adding to favourites', error);
     }
   };
 
@@ -91,7 +101,11 @@ const Boats = () => {
                         >
                           See more details
                         </NavBtnLink>
-                        <Button variant="ghost" colorScheme="blue">
+                        <Button
+                          variant="ghost"
+                          colorScheme="blue"
+                          onClick={() => handleAddToFavourites(boat._id)}
+                        >
                           Add to Favourites
                         </Button>
                       </ButtonGroup>
@@ -101,6 +115,7 @@ const Boats = () => {
               );
             })}
         </div>
+        <Footer />
       </div>
     );
   } else {
