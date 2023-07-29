@@ -64,7 +64,11 @@ const Search = () => {
 
                     <Stack mt="6" spacing="3">
                       <Heading size="md">{boat.title}</Heading>
-                      <Text>{boat.description}</Text>
+                      <Text>
+                        {boat.description.length > 50
+                          ? `${boat.description.slice(0, 250)}...`
+                          : boat.description}
+                      </Text>
                       <Text color="blue.600" fontSize="2xl">
                         {boat.price}€
                       </Text>

@@ -51,7 +51,7 @@ const Signup = () => {
       await signup(user);
       navigate('/login');
     } catch (error) {
-      console.log('Error signin up', error);
+      console.log('Error signing up', error);
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
     }
@@ -67,7 +67,7 @@ const Signup = () => {
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
-            Sign up
+            Sign up to Holdtheboats!
           </Heading>
         </Stack>
         <Box

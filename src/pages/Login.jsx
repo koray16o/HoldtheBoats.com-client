@@ -63,7 +63,8 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+            <Heading fontSize={'4xl'}>Welcome to Holdtheboats!</Heading>
+            <Heading fontSize={'2xl'}>Sign in to your account</Heading>
           </Stack>
 
           <Box rounded={'lg'} boxShadow={'lg'} p={8}>
